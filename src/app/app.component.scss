@@ -1,0 +1,122 @@
+.header {
+  text-align: center;
+  padding: 32px 16px 16px;
+
+  &__title {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--accent-green);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    margin: 6px 0 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  &__hint {
+    margin: 4px 0 0;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+}
+
+.mode-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto 10px;
+  padding: 0 16px;
+}
+
+.mode-btn {
+  padding: 8px 22px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background: var(--btn-bg);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.5px;
+
+  &--active {
+    border-color: #555;
+    &:hover, &.selected { background: #c62828; border-color: #c62828; color: #fff; }
+  }
+
+  &--passive {
+    border-color: #555;
+    &:hover, &.selected { background: #7b1fa2; border-color: #7b1fa2; color: #fff; }
+  }
+
+  &--idle {
+    border-color: #555;
+    &:hover, &.selected { background: #1565c0; border-color: #1565c0; color: #fff; }
+  }
+}
+
+.ec-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 16px 24px 48px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .ec-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .ec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .ec-grid {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+}
+
+.farms-section {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+
+  &__title {
+    font-size: 1.4rem;
+    color: var(--accent-purple);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 16px;
+  }
+}
+
+.farms-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .farms-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .farms-section {
+    padding: 0 12px 32px;
+  }
+}

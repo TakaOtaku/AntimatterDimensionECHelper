@@ -1,0 +1,75 @@
+.farm-card {
+  display: flex;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 12px rgba(179, 136, 255, 0.2);
+  }
+
+  &__body {
+    flex: 1;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  &__label {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--accent-purple);
+    font-weight: 700;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 1px solid var(--card-border);
+  }
+
+  &__btn {
+    padding: 8px 16px;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    background: var(--btn-bg);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+
+    &:hover {
+      background: var(--accent-purple);
+      color: var(--bg-primary);
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 8px rgba(179, 136, 255, 0.4);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &.copied {
+      background: var(--accent-green);
+      color: var(--bg-primary);
+      border-color: var(--accent-green);
+    }
+  }
+}

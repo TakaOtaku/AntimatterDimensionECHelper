@@ -1,0 +1,26 @@
+<div class="ec-card">
+  <div class="ec-card__body">
+    <h3 class="ec-card__title">EC{{ ec().id }}</h3>
+    <p class="ec-card__description">{{ ec().description }}</p>
+    <p class="ec-card__reward"><span class="label">Reward:</span> {{ ec().reward }}</p>
+  </div>
+
+  <div class="ec-card__completions">
+    @for (comp of ec().completions; track comp.completion) {
+      <button
+        class="ec-card__btn"
+        [class.copied]="copiedIndex() === comp.completion"
+        [class.active]="activeCompletion() === comp.completion"
+        [class.completed]="isCompleted(comp.completion)"
+        [title]="comp.tip || 'EC' + ec().id + 'x' + comp.completion + ' -- ' + comp.ttRequired + ' TT, ~' + comp.avgTime"
+        (click)="copyStudyString(comp.completion, comp.studyString)"
+      >
+        @if (copiedIndex() === comp.completion) {
+          &#10003;
+        } @else {
+          {{ comp.completion }}
+        }
+      </button>
+    }
+  </div>
+</div>

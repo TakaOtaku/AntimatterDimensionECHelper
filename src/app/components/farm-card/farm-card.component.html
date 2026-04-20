@@ -1,0 +1,20 @@
+<div class="farm-card">
+  <div class="farm-card__body">
+    <h4 class="farm-card__label">{{ farm().label }}</h4>
+  </div>
+
+  <div class="farm-card__action">
+    <button
+      class="farm-card__btn"
+      [class.copied]="copied()"
+      title="Copy study string"
+      (click)="copyStudyString()"
+    >
+      @if (copied()) {
+        ✓
+      } @else {
+        Copy
+      }
+    </button>
+  </div>
+</div>

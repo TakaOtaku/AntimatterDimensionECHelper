@@ -1,0 +1,33 @@
+<header class="header">
+  <h1 class="header__title">EC Planner</h1>
+  <p class="header__subtitle">Antimatter Dimensions - Eternity Challenge Study Trees</p>
+  <p class="header__hint">Click a completion button (1-5) to copy its Time Study import string</p>
+</header>
+
+<div class="mode-selector">
+  <button class="mode-btn mode-btn--active" [class.selected]="mode() === 'active'" (click)="setMode('active')">Active</button>
+  <button class="mode-btn mode-btn--passive" [class.selected]="mode() === 'passive'" (click)="setMode('passive')">Passive</button>
+  <button class="mode-btn mode-btn--idle" [class.selected]="mode() === 'idle'" (click)="setMode('idle')">Idle</button>
+</div>
+
+<app-ec-navigator [steps]="ecSteps()" (stepChanged)="onStepChanged($event)" (advance)="onAdvance($event)" />
+
+<main class="ec-grid">
+  @for (ec of challenges(); track ec.id) {
+    <app-ec-card
+      [id]="'ec-card-' + ec.id"
+      [ec]="ec"
+      [activeCompletion]="activeEcId() === ec.id ? activeCompletion() : null"
+      [completedSteps]="completedSteps()"
+    />
+  }
+</main>
+
+<section class="farms-section">
+  <h2 class="farms-section__title">Farms</h2>
+  <div class="farms-grid">
+    @for (farm of farms(); track farm.label) {
+      <app-farm-card [farm]="farm" />
+    }
+  </div>
+</section>
