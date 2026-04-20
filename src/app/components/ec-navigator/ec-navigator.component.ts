@@ -21,20 +21,22 @@ export class EcNavigatorComponent {
   copied = signal(false);
 
   currentStep = computed(() => this.steps()[this.currentIndex()]);
+  isFirst = computed(() => this.currentIndex() === 0);
+  isLast = computed(() => this.currentIndex() === this.steps().length - 1);
 
   prev(): void {
-    const len = this.steps().length;
-    this.currentIndex.update(i => (i - 1 + len) % len);
+    if (this.isFirst()) return;
+    this.currentIndex.update(i => i - 1);
     const target = this.currentStep();
     this.retreat.emit(target);
     this.stepChanged.emit(target);
   }
 
   next(): void {
+    if (this.isLast()) return;
     const current = this.currentStep();
     this.advance.emit(current);
-    const len = this.steps().length;
-    this.currentIndex.update(i => (i + 1) % len);
+    this.currentIndex.update(i => i + 1);
     this.stepChanged.emit(this.currentStep());
   }
 

@@ -1,5 +1,5 @@
 <nav class="ec-nav">
-  <button class="ec-nav__arrow" (click)="prev()" title="Previous EC step">◀</button>
+  <button class="ec-nav__arrow" [disabled]="isFirst()" (click)="prev()" title="Previous EC step">◀</button>
 
   <div class="ec-nav__label" (click)="copyCurrentString()" title="Click to copy study string">
     @if (copied()) {
@@ -10,5 +10,5 @@
     <span class="ec-nav__tt">{{ currentStep().ttRequired }} TT</span>
   </div>
 
-  <button class="ec-nav__arrow" (click)="next()" title="Mark completed & next">&#9654;</button>
+  <button class="ec-nav__arrow" [disabled]="isLast()" (click)="next()" title="Mark completed & next">&#9654;</button>
 </nav>
