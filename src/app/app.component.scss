@@ -120,3 +120,31 @@
     padding: 0 12px 32px;
   }
 }
+
+.tree-section {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+
+  &__title {
+    font-size: 1.4rem;
+    color: var(--accent-purple);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 6px;
+  }
+
+  &__hint {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tree-section {
+    padding: 0 12px 32px;
+  }
+}

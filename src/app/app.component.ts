@@ -3,12 +3,13 @@ import { CopyToastComponent } from './components/copy-toast/copy-toast.component
 import { EcCardComponent } from './components/ec-card/ec-card.component';
 import { EcNavigatorComponent } from './components/ec-navigator/ec-navigator.component';
 import { FarmCardComponent } from './components/farm-card/farm-card.component';
+import { TreeCalculatorComponent } from './components/tree-calculator/tree-calculator.component';
 import { EcDataService } from './services/ec-data.service';
 import { EcStep, PlayMode } from './models/ec.model';
 
 @Component({
   selector: 'app-root',
-  imports: [CopyToastComponent, EcCardComponent, EcNavigatorComponent, FarmCardComponent],
+  imports: [CopyToastComponent, EcCardComponent, EcNavigatorComponent, FarmCardComponent, TreeCalculatorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

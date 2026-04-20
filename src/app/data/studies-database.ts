@@ -1,0 +1,83 @@
+export const TREE_CONSTANTS = {
+  PRE_SPLIT_EARLY: [11, 21, 33, 31, 41],
+  PRE_SPLIT: [11, 22, 32, 42, 51, 61],
+  EXTRA: [21, 31, 41, 33, 62],
+  ANTIMATTER: [71, 81, 91, 101],
+  INFINITY: [72, 82, 92, 102],
+  TIME: [73, 83, 93, 103],
+  ACTIVE: [121, 131, 141],
+  PASSIVE: [122, 132, 142],
+  IDLE: [123, 133, 143],
+  POST_SPLIT: [151, 161, 171, 181, 162],
+};
+
+interface StudyEntry {
+  id: number;
+  cost: number;
+  prerequisites: number[];
+}
+
+interface StudyMap {
+  [key: string]: StudyEntry;
+}
+
+export const studies: StudyMap = {
+  "11": { id: 11, cost: 1, prerequisites: [] },
+  "21": { id: 21, cost: 3, prerequisites: [11] },
+  "22": { id: 22, cost: 2, prerequisites: [11] },
+  "31": { id: 31, cost: 3, prerequisites: [21] },
+  "32": { id: 32, cost: 2, prerequisites: [22] },
+  "33": { id: 33, cost: 2, prerequisites: [22] },
+  "41": { id: 41, cost: 4, prerequisites: [31] },
+  "42": { id: 42, cost: 6, prerequisites: [32] },
+  "51": { id: 51, cost: 3, prerequisites: [41, 42] },
+  "61": { id: 61, cost: 3, prerequisites: [51] },
+  "62": { id: 62, cost: 3, prerequisites: [42] },
+  "71": { id: 71, cost: 4, prerequisites: [61] },
+  "72": { id: 72, cost: 6, prerequisites: [61] },
+  "73": { id: 73, cost: 5, prerequisites: [61] },
+  "81": { id: 81, cost: 4, prerequisites: [71] },
+  "82": { id: 82, cost: 6, prerequisites: [72] },
+  "83": { id: 83, cost: 5, prerequisites: [73] },
+  "91": { id: 91, cost: 4, prerequisites: [81] },
+  "92": { id: 92, cost: 5, prerequisites: [82] },
+  "93": { id: 93, cost: 7, prerequisites: [83] },
+  "101": { id: 101, cost: 4, prerequisites: [91] },
+  "102": { id: 102, cost: 6, prerequisites: [92] },
+  "103": { id: 103, cost: 6, prerequisites: [93] },
+  "111": { id: 111, cost: 12, prerequisites: [101, 102, 103] },
+  "121": { id: 121, cost: 9, prerequisites: [111] },
+  "122": { id: 122, cost: 9, prerequisites: [111] },
+  "123": { id: 123, cost: 9, prerequisites: [111] },
+  "131": { id: 131, cost: 5, prerequisites: [121] },
+  "132": { id: 132, cost: 5, prerequisites: [122] },
+  "133": { id: 133, cost: 5, prerequisites: [123] },
+  "141": { id: 141, cost: 4, prerequisites: [131] },
+  "142": { id: 142, cost: 4, prerequisites: [132] },
+  "143": { id: 143, cost: 4, prerequisites: [133] },
+  "151": { id: 151, cost: 8, prerequisites: [141, 142, 143] },
+  "161": { id: 161, cost: 7, prerequisites: [151] },
+  "162": { id: 162, cost: 7, prerequisites: [151] },
+  "171": { id: 171, cost: 15, prerequisites: [161, 162] },
+  "181": { id: 181, cost: 200, prerequisites: [171] },
+  "191": { id: 191, cost: 400, prerequisites: [181] },
+  "192": { id: 192, cost: 730, prerequisites: [181] },
+  "193": { id: 193, cost: 300, prerequisites: [181] },
+  "201": { id: 201, cost: 900, prerequisites: [192] },
+  "211": { id: 211, cost: 120, prerequisites: [191] },
+  "212": { id: 212, cost: 150, prerequisites: [191] },
+  "213": { id: 213, cost: 200, prerequisites: [193] },
+  "214": { id: 214, cost: 120, prerequisites: [193] },
+  "221": { id: 221, cost: 900, prerequisites: [211] },
+  "222": { id: 222, cost: 900, prerequisites: [211] },
+  "223": { id: 223, cost: 900, prerequisites: [212] },
+  "224": { id: 224, cost: 900, prerequisites: [212] },
+  "225": { id: 225, cost: 900, prerequisites: [213] },
+  "226": { id: 226, cost: 900, prerequisites: [213] },
+  "227": { id: 227, cost: 900, prerequisites: [214] },
+  "228": { id: 228, cost: 900, prerequisites: [214] },
+  "231": { id: 231, cost: 500, prerequisites: [221, 222] },
+  "232": { id: 232, cost: 500, prerequisites: [223, 224] },
+  "233": { id: 233, cost: 500, prerequisites: [225, 226] },
+  "234": { id: 234, cost: 500, prerequisites: [227, 228] },
+};

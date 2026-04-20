@@ -1,0 +1,32 @@
+<div class="tree-calc">
+  <div class="tree-calc__input-row">
+    <label class="tree-calc__label" for="tt-input">Time Theorems</label>
+    <input
+      id="tt-input"
+      class="tree-calc__input"
+      type="number"
+      min="0"
+      placeholder="Enter TT amount…"
+      [value]="ttInput() ?? ''"
+      (input)="onInput($event)"
+    />
+  </div>
+
+  @if (treeString()) {
+    <div
+      class="tree-calc__result"
+      [class.copied]="copied()"
+      title="Click to copy"
+      (click)="copyTree()"
+    >
+      <code class="tree-calc__string">
+        @for (token of tokens(); track $index) {
+          <span [class]="token.cssClass">{{ token.text }}</span>
+        }
+      </code>
+      <span class="tree-calc__copy-hint">
+        @if (copied()) { ✓ Copied! } @else { Click to copy }
+      </span>
+    </div>
+  }
+</div>
