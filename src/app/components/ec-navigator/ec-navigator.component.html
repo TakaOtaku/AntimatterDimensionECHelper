@@ -1,14 +1,18 @@
-<nav class="ec-nav">
-  <button class="ec-nav__arrow" [disabled]="isFirst()" (click)="prev()" title="Previous EC step">◀</button>
+<div class="ec-nav-container">
+  <nav class="ec-nav">
+    <button class="ec-nav__arrow" [disabled]="isFirst()" (click)="prev()" title="Previous EC step">◀</button>
 
-  <div class="ec-nav__label" (click)="copyCurrentString()" title="Click to copy study string">
-    @if (copied()) {
-      <span class="ec-nav__name ec-nav__name--copied">Copied!</span>
-    } @else {
-      <span class="ec-nav__name">{{ currentStep().label }}</span>
-    }
-    <span class="ec-nav__tt">{{ currentStep().ttRequired }} TT</span>
-  </div>
+    <div class="ec-nav__label" (click)="copyCurrentString()" title="Click to copy study string">
+      @if (copied()) {
+        <span class="ec-nav__name ec-nav__name--copied">Copied!</span>
+      } @else {
+        <span class="ec-nav__name">{{ currentStep().label }}</span>
+      }
+      <span class="ec-nav__tt">{{ currentStep().ttRequired }} TT</span>
+    </div>
 
-  <button class="ec-nav__arrow" [disabled]="isLast()" (click)="next()" title="Mark completed & next">&#9654;</button>
-</nav>
+    <button class="ec-nav__arrow" [disabled]="isLast()" (click)="next()" title="Mark completed & next">&#9654;</button>
+  </nav>
+
+  <button class="ec-nav-container__reset" [disabled]="isFirst()" (click)="resetToFirst()" title="Reset to EC1x1">&#8634;</button>
+</div>

@@ -14,15 +14,22 @@
   <button class="mode-btn mode-btn--idle" [class.selected]="mode() === 'idle'" (click)="setMode('idle')">Idle</button>
 </div>
 
-<app-ec-navigator [steps]="ecSteps()" (stepChanged)="onStepChanged($event)" (advance)="onAdvance($event)"
-  (retreat)="onRetreat($event)" />
+<app-ec-navigator #ecNav [steps]="ecSteps()" (stepChanged)="onStepChanged($event)" (advance)="onAdvance($event)"
+  (retreat)="onRetreat($event)" (resetNav)="onReset()" />
 
-<main class="ec-grid">
-  @for (ec of challenges(); track ec.id) {
-  <app-ec-card [id]="'ec-card-' + ec.id" [ec]="ec"
-    [activeCompletion]="activeEcId() === ec.id ? activeCompletion() : null" [completedSteps]="completedSteps()" />
-  }
-</main>
+<div class="layout">
+  <aside class="layout__sidebar">
+    <app-ec-timeline [steps]="ecSteps()" [currentIndex]="currentNavIndex()" [completedSteps]="completedSteps()"
+      (jumpTo)="onTimelineJump($event)" />
+  </aside>
+
+  <main class="ec-grid">
+    @for (ec of challenges(); track ec.id) {
+    <app-ec-card [id]="'ec-card-' + ec.id" [ec]="ec"
+      [activeCompletion]="activeEcId() === ec.id ? activeCompletion() : null" [completedSteps]="completedSteps()" />
+    }
+  </main>
+</div>
 
 <section class="farms-section">
   <h2 class="farms-section__title">Farms</h2>

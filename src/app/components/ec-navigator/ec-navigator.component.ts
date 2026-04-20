@@ -16,6 +16,7 @@ export class EcNavigatorComponent {
   stepChanged = output<EcStep>();
   advance = output<EcStep>();
   retreat = output<EcStep>();
+  resetNav = output<void>();
 
   currentIndex = signal(0);
   copied = signal(false);
@@ -46,5 +47,19 @@ export class EcNavigatorComponent {
     this.copied.set(true);
     this.notify.show(step.label, step.studyString);
     setTimeout(() => this.copied.set(false), 1500);
+  }
+
+  resetToFirst(): void {
+    if (this.isFirst()) return;
+    this.currentIndex.set(0);
+    this.resetNav.emit();
+    this.stepChanged.emit(this.currentStep());
+  }
+
+  jumpTo(index: number): void {
+    const len = this.steps().length;
+    if (index < 0 || index >= len) return;
+    this.currentIndex.set(index);
+    this.stepChanged.emit(this.currentStep());
   }
 }

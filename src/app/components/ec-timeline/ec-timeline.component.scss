@@ -1,0 +1,106 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.timeline__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px 6px 8px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s;
+  border-radius: 4px;
+  margin: 0 4px;
+
+  &:hover {
+    background: rgba(76, 175, 80, 0.08);
+  }
+
+  // Vertical line connecting bubbles
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px; // center of bubble
+    top: 28px;
+    width: 2px;
+    height: calc(100% - 16px);
+    background: var(--card-border);
+    z-index: 0;
+  }
+
+  &--completed:not(:last-child)::after {
+    background: var(--accent-green);
+  }
+}
+
+.timeline__bubble {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--card-border);
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.15s;
+
+  .timeline__item--completed & {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+  }
+
+  .timeline__item--current & {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+  }
+
+  .timeline__item--current.timeline__item--completed & {
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+  }
+}
+
+.timeline__check {
+  font-size: 0.65rem;
+  color: var(--bg-primary);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.timeline__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.timeline__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+
+  .timeline__item--current & {
+    color: var(--accent-green);
+    font-weight: 700;
+  }
+
+  .timeline__item--completed & {
+    color: var(--text-primary);
+  }
+}
+
+.timeline__tt {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+
+  .timeline__item--current & {
+    color: var(--accent-green);
+  }
+}

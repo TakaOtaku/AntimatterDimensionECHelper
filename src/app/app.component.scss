@@ -82,9 +82,29 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  padding: 16px 24px 48px;
-  max-width: 1500px;
+  padding: 16px 24px;
+  align-items: start;
+  flex: 1;
+  min-width: 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  max-width: 1700px;
   margin: 0 auto;
+  padding: 0 16px;
+  gap: 16px;
+}
+
+.layout__sidebar {
+  position: sticky;
+  top: 32px;
+  align-self: start;
+  margin-top: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
 }
 
 @media (max-width: 1200px) {
@@ -96,6 +116,15 @@
 @media (max-width: 900px) {
   .ec-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .layout__sidebar {
+    display: none;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 0;
   }
 }
 

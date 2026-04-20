@@ -69,6 +69,18 @@ export class EcDataService {
       return next;
     });
   }
+
+  setCompletedUpTo(steps: EcStep[], index: number): void {
+    const next = new Set<string>();
+    for (let i = 0; i < index; i++) {
+      next.add(`${steps[i].ecId}-${steps[i].completion}`);
+    }
+    this.completedSteps.set(next);
+  }
+
+  clearCompleted(): void {
+    this.completedSteps.set(new Set());
+  }
 }
 
 const EC_DATA: EternityChallenge[] = [
