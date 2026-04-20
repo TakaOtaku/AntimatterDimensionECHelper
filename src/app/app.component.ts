@@ -37,6 +37,10 @@ export class AppComponent {
     this.ecData.markCompleted(step.ecId, step.completion);
   }
 
+  onRetreat(step: EcStep): void {
+    this.ecData.unmarkCompleted(step.ecId, step.completion);
+  }
+
   isCompleted(ecId: number, completion: number): boolean {
     return this.completedSteps().has(`${ecId}-${completion}`);
   }

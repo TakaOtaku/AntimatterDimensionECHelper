@@ -14,7 +14,8 @@
   <button class="mode-btn mode-btn--idle" [class.selected]="mode() === 'idle'" (click)="setMode('idle')">Idle</button>
 </div>
 
-<app-ec-navigator [steps]="ecSteps()" (stepChanged)="onStepChanged($event)" (advance)="onAdvance($event)" />
+<app-ec-navigator [steps]="ecSteps()" (stepChanged)="onStepChanged($event)" (advance)="onAdvance($event)"
+  (retreat)="onRetreat($event)" />
 
 <main class="ec-grid">
   @for (ec of challenges(); track ec.id) {

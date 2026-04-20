@@ -61,6 +61,14 @@ export class EcDataService {
       return next;
     });
   }
+
+  unmarkCompleted(ecId: number, completion: number): void {
+    this.completedSteps.update(set => {
+      const next = new Set(set);
+      next.delete(`${ecId}-${completion}`);
+      return next;
+    });
+  }
 }
 
 const EC_DATA: EternityChallenge[] = [

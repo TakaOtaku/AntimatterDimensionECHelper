@@ -15,6 +15,7 @@ export class EcNavigatorComponent {
 
   stepChanged = output<EcStep>();
   advance = output<EcStep>();
+  retreat = output<EcStep>();
 
   currentIndex = signal(0);
   copied = signal(false);
@@ -24,7 +25,9 @@ export class EcNavigatorComponent {
   prev(): void {
     const len = this.steps().length;
     this.currentIndex.update(i => (i - 1 + len) % len);
-    this.stepChanged.emit(this.currentStep());
+    const target = this.currentStep();
+    this.retreat.emit(target);
+    this.stepChanged.emit(target);
   }
 
   next(): void {
