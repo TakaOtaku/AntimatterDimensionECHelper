@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { CopyToastComponent } from './components/copy-toast/copy-toast.component';
 import { EcCardComponent } from './components/ec-card/ec-card.component';
 import { EcNavigatorComponent } from './components/ec-navigator/ec-navigator.component';
 import { FarmCardComponent } from './components/farm-card/farm-card.component';
@@ -7,7 +8,7 @@ import { EcStep, PlayMode } from './models/ec.model';
 
 @Component({
   selector: 'app-root',
-  imports: [EcCardComponent, EcNavigatorComponent, FarmCardComponent],
+  imports: [CopyToastComponent, EcCardComponent, EcNavigatorComponent, FarmCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

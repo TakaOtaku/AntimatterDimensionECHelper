@@ -1,5 +1,6 @@
-import { Component, computed, input, output, signal } from '@angular/core';
+import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { EcStep } from '../../models/ec.model';
+import { CopyNotificationService } from '../../services/copy-notification.service';
 
 @Component({
   selector: 'app-ec-navigator',
@@ -8,6 +9,8 @@ import { EcStep } from '../../models/ec.model';
   styleUrl: './ec-navigator.component.scss',
 })
 export class EcNavigatorComponent {
+  private notify = inject(CopyNotificationService);
+
   steps = input.required<EcStep[]>();
 
   stepChanged = output<EcStep>();
@@ -33,8 +36,10 @@ export class EcNavigatorComponent {
   }
 
   async copyCurrentString(): Promise<void> {
-    await navigator.clipboard.writeText(this.currentStep().studyString);
+    const step = this.currentStep();
+    await navigator.clipboard.writeText(step.studyString);
     this.copied.set(true);
+    this.notify.show(step.label, step.studyString);
     setTimeout(() => this.copied.set(false), 1500);
   }
 }
